@@ -1,0 +1,18 @@
+$bodyBg:#fff;
+$primary:#007bff;
+
+// sidePanel
+$sidebar:#fff;
+$sidebar-color:#636464;
+$sidebar-border-color: #dee2e6;
+$sidebar-link-color: #fefefe;
+
+// slider
+$n: 3;
+$item-width: 500px;
+$item-separation: 120px;
+$viewer-distance: 5000px;
+
+// Derived variables
+$theta: 2 * 3.141592653589793 / $n;
+$apothem: 482.842712474619px;
