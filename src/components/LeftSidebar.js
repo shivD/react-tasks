@@ -7,7 +7,6 @@ const LeftSidebar = () => {
             <a className="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">differentiator</a>
             <a className="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Advantages</a>
         </div>
-
        </div>
     );
 }

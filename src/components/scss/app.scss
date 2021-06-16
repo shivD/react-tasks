@@ -10,68 +10,12 @@ body {
   border-right: 1px solid $sidebar-border-color;
   height: calc(100vh - 56px);
   overflow-y: auto;
+  @media(max-width:767px){
+    height: auto;
+  }
 }
 
 // Carousel configuration parameters
-
-.carousel {
-  padding: 20px;
-
-  perspective: $viewer-distance;
-  overflow: hidden;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  > * {
-    flex: 0 0 auto;
-  }
-
-  figure {
-    margin: 0;
-
-    width: $item-width;
-    transform-style: preserve-3d;
-    transition: transform 0.5s;
-    transform-origin: 50% 50% (-$apothem);
-
-    div {
-      width: 100%;
-      box-sizing: border-box;
-      padding: 0 $item-separation / 2;
-      opacity: 0.9;
-
-      &:not(:first-of-type) {
-        position: absolute;
-        left: 0;
-        top: 0;
-        transform-origin: 50% 50% (-$apothem);
-      }
-
-      @for $i from 2 through $n {
-        &:nth-child(#{$i}) {
-          transform: rotateY(#{($i - 1) * $theta}rad);
-        }
-      }
-    }
-  }
-
-  nav {
-    display: flex;
-    justify-content: center;
-    margin: 20px 0 0;
-
-    button {
-      flex: 0 0 auto;
-      margin: 0 5px;
-
-      cursor: pointer;
-
-      letter-spacing: 1px;
-      padding: 5px 10px;
-    }
-  }
-}
 
 .left-tab {
   background: ghostwhite;
@@ -91,9 +35,9 @@ body {
   }
 }
 .sidebar-toggle {
-  top: 50%;
+  top: 28%;
   position: absolute;
-  right: 95%;
+  left:0;
   transform: translateY(-50%);
   background: $primary;
   width: 40px;
@@ -103,7 +47,7 @@ body {
   color: #fff;
   z-index: 2;
   display: none;
-  @media(max-width:1024px){
+  @media (max-width: 1024px) {
     display: flex;
   }
 }
@@ -112,15 +56,17 @@ body {
   background-image: url(../../images/bg-img.jpg);
   height: 100%;
   position: relative;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   width: 100%;
-   & > .active{
-     width: 100%;
-   }
+  display: flex;
+  justify-content: center;
+  height: calc(100vh - 56px);
+  width: 100%;
+  & > .active {
+    width: 100%;
+  }
+  @media(max-width:767px){
+    height: auto;
+  }
 }
-
 
 .contant-title {
   padding: 20px;
@@ -159,13 +105,124 @@ body {
 
 .nav-pills {
   .nav-link.active,
-    .show > .nav-link {
-     background: $primary;
+  .show > .nav-link {
+    background: $primary;
+  }
+  .nav-link {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-radius: 0;
+    border-bottom: 1px $sidebar-border-color solid;
+    text-transform: uppercase;
+    color:#000;
+  }
+}
+
+.carousel-wrapper {
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  height: 500px;
+  text-align: center;
+  max-width: 1280px;
+  width: 100%;
+}
+.carousel {
+  left: 50%;
+  position: absolute;
+  transform: translateX(-50%);
+  overflow: hidden;
+  height: 500px;
+  width: 100%;
+  padding:0;
+}
+
+.carousel .item {
+  width: 491px;
+  height: 250px;
+  background-size: 100%;
+  vertical-align: middle;
+  color: #fff;
+  text-align: center;
+  padding: 45px;
+  background: rgba(0, 0, 0, 0.35);
+  @media(max-width:1280px){
+    width: 431px;
+  }
+  @media(max-width:767px){
+   display: none !important;
+  }
+  h2 {
+    font-size: 40px;
+    text-transform: uppercase;
+    text-shadow: 3px 3px 28px white;
+    font-weight: bold;
+    @media(max-width:767px){
+       font-size: 30px;
     }
-    .nav-link{
-      padding-top:15px;
-      padding-bottom: 15px;
-     border-radius: 0;
-     border-bottom: 1px $sidebar-border-color solid;
+    &:after{
+      content: '';
+      display: inline-block;
+      width: 0;
+      height: 0;
+      border-top: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-left: 10px solid #fff;
+      border-bottom: 10px solid transparent;
+      vertical-align: 3px;
+      margin-left: 5px;
     }
+  }
+  p {
+    font-size: 18px;
+  }
+}
+
+.controls {
+  text-align: center;
+  max-width: 200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.controls a {
+  display: block;
+}
+
+.controls .previous {
+  float: left;
+}
+
+.controls .next {
+  float: right;
+}
+
+.carousel .item {
+  display: block;
+  position: absolute;
+  -webkit-transform: scale(0.5);
+  -moz-transform: scale(0.5);
+  -o-transform: scale(0.5);
+  transform: scale(0.5);
+}
+
+.carousel .item.active {
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -o-transform: scale(1);
+  transform: scale(1);
+  @media(max-width:767px){
+    display: block !important;
+    left:0;
+    right:0;
+    width: 96% !important;
+    margin: 0 auto !important;
+   }
+}
+
+.carousel .item.transition {
+  -webkit-transition: all 0.35s ease;
+  -moz-transition: all 0.35s ease;
+  -o-transition: all 0.35s ease;
+  transition: all 0.35s ease;
 }
